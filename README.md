@@ -22,27 +22,33 @@ This project aims to measure the impact of economic indicators and monetary poli
 
 ### Usage and installation instructions
 
+#### Execution
+
 1. Install Dependencies. Make sure all required libraries are installed.
 
     pip install pandas prophet matplotlib
-    #Import the required libraries and dependencies
-    import pandas as pd
-    import datetime as dt
-    from prophet import Prophet
-    import pandas as pd
-    import datetime as dt
-    from prophet import Prophet
-    import yfinance as yf
-    import matplotlib.pyplot as plt
-    import numpy as np
-    from scipy.signal import correlate
+
+    1. Ensure that the dependencies are installed to successfully import the below:
+
+    import pandas as pd<br/>
+    import datetime as dt<br/>
+    from prophet import Prophet<br/>
+    import pandas as pd<br/>
+    import datetime as dt<br/>
+    from prophet import Prophet<br/>
+    import yfinance as yf<br/>
+    import matplotlib.pyplot as plt<br/>
+    import numpy as np<br/>
+    from scipy.signal import correlate<br/>
     from datetime import date
 
-1. Read in the following CSV files: 
-SNP500, FEDFUNDS, bls-monthly-unemployment, 10-Year Treasury, GoldPricesMonthly, inflation_rate_US
+1. Open and run [Financial_Analysis.ipynb](Financial_Analysis.ipynb) in a Jupyter Notebook or Jupyter Lab.
 
-1. Run the Notebook.
-   Open the notebook in Jupyter Notebook or Jupyter Lab and run each cell sequentially.
+#### High level logic contained in Financial_Analysis.ipynb
+
+1. Read in the following CSV files from [./Resouces](https://github.com/yiannisp1822/Project1_FinanceData/tree/main/Resources):
+
+    SNP500, FEDFUNDS, bls-monthly-unemployment, 10-Year Treasury, GoldPricesMonthly, inflation_rate_US
 
 1. Data cleaning
 Each data set is edited to bring the date in the index column and retain only 1 column showing the data of interest.
