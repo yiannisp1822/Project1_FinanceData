@@ -162,8 +162,8 @@ Peak inflation rates for the year are anticipated in May.
 ![Unemployment Prediction](./graphs/Unemployment_Prediction.png)
 ![Unemployment Treands](./graphs/Unemployment_Components.png)
 
-The 2020 increase was not predicted as it was triggered by the unanticipated COVID-19 outbreak.
-Unemployment is expected to remain faily steady until at least the fall of 2025.
+The sharp 2020 unemployment increase was not predicted. The likely trigger was the unanticipated COVID-19 outbreak.
+Unemployment is projected to remain fairly steady until at least fall of 2025, which end of the prediction time period.
 Unemployment is anticipated to drop in March, assuming normal seasonality.
 
 
