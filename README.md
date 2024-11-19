@@ -36,7 +36,6 @@ This project aims to measure the relationship between leading economic indicator
 
     1. Ensure that the dependencies are installed to successfully import the below:
 
-    **Import the required libraries and dependencies**<br/>
     
     import pandas as pd <br/>
     import datetime as dt<br/>
