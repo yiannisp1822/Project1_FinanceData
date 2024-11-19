@@ -6,6 +6,8 @@
 
 [Data Analysis](#data-analysis)
 
+[Presentation](#presentation)
+
 [The Team](#the-team)
 
 ## Project Overview
@@ -34,21 +36,22 @@ This project aims to measure the relationship between leading economic indicator
 
     1. Ensure that the dependencies are installed to successfully import the below:
 
-    # Import the required libraries and dependencies
-    import pandas as pd
-    import datetime as dt
-    from prophet import Prophet
-    import pandas as pd
-    import datetime as dt
-    from prophet import Prophet
-    import yfinance as yf
-    import matplotlib.pyplot as plt
-    import numpy as np
-    from scipy.signal import correlate
-    from datetime import date 
-    import seaborn as sns
+    **Import the required libraries and dependencies**<br/>
+    
+    import pandas as pd <br/>
+    import datetime as dt<br/>
+    from prophet import Prophet<br/>
+    import pandas as pd<br/>
+    import datetime as dt<br/>
+    from prophet import Prophet<br/>
+    import yfinance as yf<br/>
+    import matplotlib.pyplot as plt<br/>
+    import numpy as np<br/>
+    from scipy.signal import correlate<br/>
+    from datetime import date<br/>
+    import seaborn as sns<br/>
 
-1. Open and run [monthly_analysis.ipynb](monthly_analysis_2.ipynb) in a Jupyter Notebook or Jupyter Lab.
+1. Open and run [monthly_analysis2.ipynb](monthly_analysis_2.ipynb) in a Jupyter Notebook or Jupyter Lab.
 
 #### High-level logic contained in monthly_analysis.ipynb:
 
@@ -58,12 +61,11 @@ This project aims to measure the relationship between leading economic indicator
 
     US-monthly-unemployment, Inflation, CCI_US, T10Y2Y
 
-2. Use Yahoo Finance to get:
-    SNP500 (ticker yf.Ticker('^GSPC'))
-    Gold (yf.ticker = 'GC=F')
-   Treasury 10year (yf.ticker('^TNX'))
+2. Use Yahoo Finance to get:<br/>
+    SNP500 (ticker yf.Ticker('^GSPC'))<br/>
+    Gold (yf.ticker = 'GC=F')<br/>
+   Treasury 10year (yf.ticker('^TNX'))<br/>
    
-
 
 1. Data cleaning
 
@@ -140,19 +142,28 @@ CCI- https://insights.ceicdata.com/
   For the SNP
   ![SNP500](./graphs/SNP_monthly.png)
 
-For Yield Curve: YieldCurve.png
-For CCI: CCI.png
+For Yield Curve:
+ ![Yield Curve](./graphs/YieldCurve.png)
 
-For FedFunds Rate: FedFundsRate.png
-For Inflation: InflationRate.png
-For Unemployment Rate: Unemployment.png
+For CCI:
+![CCI](./graphs/CCI.png)
 
-All historical data provides evidence of the market reaction during key events (70s inflation, 2000 dotcom bubble, 2008 financial crisis, 2020 pandemic, 2022 inflation)
+For FedFunds Rate:
+![FedFunds Rate](./graphs/FedFundsRate.png)
+
+For Inflation:
+![Inflation](./graphs/InflationRate.png)
+
+For Unemployment Rate:
+![Unemployment Rate](./graphs/UnemploymentRate.png)
+
+All historical data provides evidence of the market reaction during key events (1970's inflation, 2000 dotcom bubble, 2008 financial crisis, 2020 pandemic, 2022 inflation)
 
 2. **What is the correlation between FedFund rates and SNP500, 10-year Treasuries, Gold, Unemployment, and inflation?**
 ![Correlation Matrix](./graphs/correlation_matrix.png)
 
-**The highest correlations:  
+#### The highest correlations:  
+
 SNP Inflation 0.65
 CCI Unemployment -0.78
 Yield Curve Fed Rate-0.71
@@ -160,39 +171,58 @@ Yield Curve Unemployment 0.68
 Yield Curve Inflation Rate -0.60
 
 
-**Surprises: 
+#### Surprises:
+
 When looking at the cross-correlation lag between these indicators, correction seems to occur at the 0 point (ie no time shift). Given the leading and lagging relationship, we would have expected to see some lag. However, given the fact that we are taking monthly mean samples we may not have a granular enough view.
 Fed Rate predictions seem to indicate a rise in rates however this is in contrast to the recent news (fed expected to keep rates stable or lower)
 
 4. **Predict future Inflation Rates, Unemployment, and Fed Rates and see the relationship with their closely correlated leading indicators
-   SNP500, CCI, and YC, respectively.
+   SNP500, CCI, and YC, respectively.**
 
    The Pearson prediction model via Meta's Prophet was used to create the following predictions.
 
 * Inflation Prediction
 ![Inflation Prediction](./graphs/Inflation_Prediction.png)
-![Inflation Trends](./graphs/Inflation_Components.png
-(Add the SNP prediction graphs)
+![Inflation Trends](./graphs/Inflation_Components.png)
 
 As of 2015, the overall trend is for inflation to rise. The trend is predicted to continue at least through fall of 2025.
 Peak inflation rates for the year are anticipated in May.
+
+* SNP Predictions
+![SNP Prediction](./graphs/SNP_Prediction.png)
+![SNP Trends](./graphs/SNP_Components.png)
 
 * Unemployment Prediction
 ![Unemployment Prediction](./graphs/Unemployment_Prediction.png)
 ![Unemployment Treands](./graphs/Unemployment_Components.png)
 
-(add the CCI prediction graphs)
-
+* CCI Prediction
+![CCI Prediction](./graphs/CCI_Prediction.png)
+![CCI Treands](./graphs/CCI_Components.png)
 The sharp 2020 unemployment increase was not predicted. The likely trigger was the unanticipated COVID-19 outbreak.
 Unemployment is projected to remain fairly steady until at least fall of 2025, which end of the prediction time period.
 Unemployment is anticipated to drop in March, assuming normal seasonality.
 
-*FedRate prediction
-FedRates are predicted to rise in the next 12 months. However, this is not in line with recent news (Fed unlikely to do raises in the near future - if 
-anything, more cuts are predicted)
+* FedRate prediction
+![FedRate Prediction](./graphs/FedRate_Prediction.png)
+![FedRate Treands](./graphs/FedRate_Components.png)
 
- add Yield Curve prediction graphs
- 
+FedRates are predicted to rise in the next 12 months. However, this is not in line with recent news (Fed unlikely to do raises in the near future - if anything, more cuts are predicted)
+
+* Yield Curve prediction
+![YieldCurve Prediction](./graphs/YieldCurve_Prediction.png)
+![YieldCurve Treands](./graphs/YieldCurve_Components.png)
+Forecasts confirm the inverse relationship of  the YC and FedRates
+With YC trending downwards one should expect Fed Rate to rise in the near future.
+
+## Presentation
+
+<iframe
+  src="https://docs.google.com/presentation/d/1HBCpvfkWIzQ6nDba2KJSNt6SU1Rmlibu/edit?usp=sharing&ouid=104881676550207667402&rtpof=true&sd=true"
+  style="width:100%; height:300px;"
+></iframe>
+
+[Presentation Link](https://docs.google.com/presentation/d/1HBCpvfkWIzQ6nDba2KJSNt6SU1Rmlibu/edit?usp=sharing&ouid=104881676550207667402&rtpof=true&sd=true)
 
 ## The Team
 
