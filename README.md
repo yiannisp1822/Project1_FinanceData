@@ -12,13 +12,16 @@
 
 ### Overview
 
-This project aims to measure the impact of economic indicators and monetary policy on the market. We examined monthly financial data, focusing primarily on the **S&P 500 index**, **treasury bond rates**, and **gold prices** to understand historical trends and understand how the markets may move in the near future. The project provides insights that could aid in strategic decision-making for financial analysts, investors, and policymakers by employing time series analysis and forecasting models.
+This project aims to measure the relationship between leading economic indicators on market data and lagging economic indicators. Specifically, we looked at how leading indicators such as the stock market, Consumer Confidence Index (CCI) and the Treasury Yield Curve affect and correlate with monetary policy (Fed Rates), Unemployment and Inflation and modeled forecasts to help inform potential investment decisions
 
 ### Questions we aim to answer
 
-1. **What were the trends in the S&P 500, treasury bonds, and gold prices from 2007 to the present?**
-2. **What is the correlation between FedFund rates and SNP500, 10-year Treasuries, Gold, Unemployment, and inflation?**
-3. **Predict future Inflation Rates and Unemployment rates to inform investment decisions.**
+1. What are the historical trends across, the
+- Leading indicators: SNP500, Gold, Yield Curve, CCI
+- Lagging indicators: Unemployment, Inflation and Interest Rates
+2. What is the correlation between leading and lagging indicators and what is the timeshift (if any)
+3. Predict future US Inflation, Unemployment and Fed Rates to inform investment decisions. Cross reference potential course of action with forecasted market data for S&P 500, the 2-10 Year Treasury spreads (Yield Curve) and CCI
+
 
 ### Usage and installation instructions
 
@@ -31,35 +34,48 @@ This project aims to measure the impact of economic indicators and monetary poli
 
     1. Ensure that the dependencies are installed to successfully import the below:
 
-    import pandas as pd<br/>
-    import datetime as dt<br/>
-    from prophet import Prophet<br/>
-    import pandas as pd<br/>
-    import datetime as dt<br/>
-    from prophet import Prophet<br/>
-    import yfinance as yf<br/>
-    import matplotlib.pyplot as plt<br/>
-    import numpy as np<br/>
-    from scipy.signal import correlate<br/>
-    from datetime import date
+    # Import the required libraries and dependencies
+    import pandas as pd
+    import datetime as dt
+    from prophet import Prophet
+    import pandas as pd
+    import datetime as dt
+    from prophet import Prophet
+    import yfinance as yf
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from scipy.signal import correlate
+    from datetime import date 
+    import seaborn as sns
 
-1. Open and run [monthly_analysis.ipynb](monthly_analysis.ipynb) in a Jupyter Notebook or Jupyter Lab.
+1. Open and run [monthly_analysis.ipynb](monthly_analysis_2.ipynb) in a Jupyter Notebook or Jupyter Lab.
 
 #### High-level logic contained in monthly_analysis.ipynb:
 
-[monthly_analysis.ipynb](monthly_analysis.ipynb) is the main notebook for performing monthly time series analysis and forecasting.
+[monthly_analysis.ipynb](monthly_analysis_2.ipynb) is the main notebook for performing monthly time series analysis and forecasting.
 
 1. Read the following CSV files from [./Resouces](./Resources/):
 
-    SNP500, FEDFUNDS, bls-monthly-unemployment, 10-Year Treasury, GoldPricesMonthly, inflation_rate_US
+    US-monthly-unemployment, Inflation, CCI_US, T10Y2Y
+
+2. Use Yahoo Finance to get:
+    SNP500 (ticker yf.Ticker('^GSPC'))
+    Gold (yf.ticker = 'GC=F')
+   Treasury 10year (yf.ticker('^TNX'))
+   
+
 
 1. Data cleaning
 
     Each data set is edited to bring the date in the index column and retain only 1 column showing the data of interest.
+   Set the date as the index and convert to datetime format
+   Resample to get the data in monthly frequency and set the start of each month to the first day of the month
+   Remove any N/A, Null data
+
 
 1. Concatenate
 
-    Concatenate all the data frames into a single frame that includes all the monthly data from 2007 to 2024.
+    Concatenate all the data frames into a single frame that includes all the monthly data (common columns from 2000 to 2004)
 
 1. Run correlations matrix and visualizations to observe the relationships between the data
 
@@ -73,23 +89,25 @@ Show forecasting trends for Unemployment and Inflation.
 
 ### Business Understanding
 
-This project examines the movements of the S&P 500, 10-Year Treasury and Gold Prices based on Fed Monetary policy, Inflation and Unemployment data. By understanding these relationships, we hope to inform potential investment decisions in 2025.
+This project aims to measure the relationship of leading economic indicators on market data and lagging economic indicators. Specifically, we looked at how leading indicators such as the stock market, Consumer Confidence Index (CCI) and the Treasury Yield Curve affect and correlate with monetary policy (Fed Rates), Unemployment and Inflation and modeled forecasts to help inform potential investment decisions.
 
 ### Data Understanding
 
-This project leverages a comprehensive dataset containing several economic and financial indicators that collectively offer a multifaceted view of the U.S. market dynamics from 2007 to 2024. Key datasets include:
+This project leverages a comprehensive dataset containing several economic and financial indicators that collectively offer a multifaceted view of the U.S. market dynamics. Key datasets include:
 
 #### 1. S&P 500 Index
 
   This index represents the stock performance of 500 leading companies in the U.S., serving as a barometer for the overall health of the U.S. economy. The S&P 500 is essential for understanding market trends and investor sentiment.
 
-#### 2. Treasury Bond Rates
-
-  Data on ten-year Treasury bond yields provides insights into long-term government debt trends. Treasury yields often reflect investor confidence in the market and influence both short-term and long-term interest rates, making them valuable for evaluating financial conditions and market stability.
-
-#### 3. Gold Prices
+#### 2. Gold Prices
 
   Gold is traditionally seen as a safe haven asset, and its price movements often reflect investor sentiment during economic uncertainty. Analyzing gold prices alongside other assets helps us understand how investors react to inflationary pressures and financial risks.
+
+#### 3. Yield Curve
+The Yield Curve is the spread between the 2Y and 10Y treasury bond rates and is a leading indicator of the economy. An inverted Yield curve usually signifies a recession. 
+
+#### 4. CCI
+CCI - Consumer Confidence Index indicates the consumer's confidence and is a leading economic indicator  that signals the appetite to spend.
 
 #### 4. Inflation Indicators (Core US Inflation)
 
@@ -99,62 +117,62 @@ This project leverages a comprehensive dataset containing several economic and f
 
   Employment data includes the unemployment rate and the civilian labor force participation rate, which indicate the health of the labor market and the level of economic engagement. These metrics help gauge productivity, labor market tightness, and economic stability.
 
+
+#### 6. Fed Rates(interest rates)- Interest Rates are set by the Fed as part of the US monetary policy in order to modulate the economy
+
 Each dataset is resampled to a monthly basis. This aggregation supports the project’s goal of identifying patterns, correlations, and predictive trends between the stock market and macroeconomic indicators, making it possible to anticipate the S&P 500's future movements.
 By studying the relationships among these datasets, the project aims to reveal how economic indicators and policy shifts influence the market. Insights from this analysis can aid financial analysts, investors, and policymakers in making informed decisions based on historical trends and anticipated changes in economic conditions.
 
 ### Data Sources
 
-S&P 500 (s&p index) - [YFinance](https://pypi.org/project/yfinance/)
-
-10-Year US Treasuries - [YFinance](https://pypi.org/project/yfinance/)
-
-Fed Interest Rates -  [Fed Reserve Data Download](https://www.federalreserve.gov/datadownload/)
-
-Inflation (US Core inflation) - [Trading Economics](https://data.tradingeconomics.com)
-
-Unemployment - [BLS Unemployment](https://www.bls.gov/data/#unemployment)
-
-Gold - (Gold Futures) - - [Trading Economics](https://data.tradingeconomics.com)
+S&P 500 (s&p index) - YFinance
+Yield Curve - https://fred.stlouisfed.org/series/T10Y2Y
+Fed Interest Rates - Fed Reserve Data Download
+Inflation (US Core inflation) - Trading Economics
+Unemployment - BLS Unemployment
+Gold  - YFinance
+CCI- https://insights.ceicdata.com/
 
 ### Analysis
 
-1. **What were the trends in the S&P 500, Fedrates, inflation treasury bonds, and gold prices from 2007 to the present?**
+1. **What were the trends in the S&P 500, Yield Curve, CCI, Gold prices  Fedrates, inflation, and Unemployment as far as 1950s (varies by dataset) to the present?**
 
   For the SNP
   ![SNP500](./graphs/SNP_monthly.png)
 
-  SNP historical data shows the drop of the market post-2008 financial crisis as well as the drop during the 2020 pandemic and subsequent recovery
-  Similarly, FedRates dropped close to 0 to stimulate the market post-2008 financial crisis and again during the pandemic. A steep rise in 2022 was employed by the Fed to combat fast-rising inflation (see inflation data) caused by the stimulus policy (~1.5 trillion (check)
+For Yield Curve: YieldCurve.png
+For CCI: CCI.png
 
-  ![FedRate and Inflation](./graphs/FedRate_GoldPrice.png)
+For FedFunds Rate: FedFundsRate.png
+For Inflation: InflationRate.png
+For Unemployment Rate: Unemployment.png
 
-  Gold Rose significantly post-2008 (calculate % between 2008 and 2012) - as markets flew to safety and had another x% increase during the pandemic, followed by a further x% increase after 2024. We would expect Gold to increase in parallel with the inflation spike of 2022-23 (as Gold is an inflation protection instrument). However, the spike occurred in 2024 as inflation was dropping and under control.
-
-  ![Treasury 10 Year vs FedRate](./graphs/Treasury10YvsFedRate.png)
-
-  Treasuries follow the same pattern as FedRates in response to the financial crisis and the pandemic, which is expected.
+All historical data provides evidence of the market reaction during key events (70s inflation, 2000 dotcom bubble, 2008 financial crisis, 2020 pandemic, 2022 inflation)
 
 2. **What is the correlation between FedFund rates and SNP500, 10-year Treasuries, Gold, Unemployment, and inflation?**
 ![Correlation Matrix](./graphs/correlation_matrix.png)
 
 **The highest correlations:  
-Gold Price and SNP500
-Fed Rate and 10Year T rate
-SNP 500 and inflation rate
-Unemployment rate and SNP500 and FedRate - Inversely correlated, which makes sense (as the market does well, it means that unemployment is lower, and usually employment data releases lead to market movements (low unemployment, market rises, high unemployment, market drops). Similarly, FedRate- low Rates stimulate the economy and push unemployment. 
+SNP Inflation 0.65
+CCI Unemployment -0.78
+Yield Curve Fed Rate-0.71
+Yield Curve Unemployment 0.68
+Yield Curve Inflation Rate -0.60
+
 
 **Surprises: 
-Gold and the SNP 500 have a strong correlation—I'm not sure why. Gold is a type of inflation protection and flight-to-safety asset. SNP, while there is a correlation with inflation, it is not strong, and typically, equities are considered risky assets. I need to explore this further.
-FedRate—Inflation Rate (0.29)—We would expect Fed Rates to follow inflation (the Fed typically raises rates in response to high inflation).
+When looking at the cross-correlation lag between these indicators, correction seems to occur at the 0 point (ie no time shift). Given the leading and lagging relationship, we would have expected to see some lag. However, given the fact that we are taking monthly mean samples we may not have a granular enough view.
+Fed Rate predictions seem to indicate a rise in rates however this is in contrast to the recent news (fed expected to keep rates stable or lower)
 
+4. **Predict future Inflation Rates, Unemployment, and Fed Rates and see the relationship with their closely correlated leading indicators
+   SNP500, CCI, and YC, respectively.
 
-4. **Predict future Inflation Rates and Unemployment rates to inform investment decisions.**
-
-The Pearson prediction model via Meta's Prophet was used to create the following predictions.
+   The Pearson prediction model via Meta's Prophet was used to create the following predictions.
 
 * Inflation Prediction
 ![Inflation Prediction](./graphs/Inflation_Prediction.png)
-![Inflation Trends](./graphs/Inflation_Components.png)
+![Inflation Trends](./graphs/Inflation_Components.png
+(Add the SNP prediction graphs)
 
 As of 2015, the overall trend is for inflation to rise. The trend is predicted to continue at least through fall of 2025.
 Peak inflation rates for the year are anticipated in May.
@@ -163,10 +181,18 @@ Peak inflation rates for the year are anticipated in May.
 ![Unemployment Prediction](./graphs/Unemployment_Prediction.png)
 ![Unemployment Treands](./graphs/Unemployment_Components.png)
 
+(add the CCI prediction graphs)
+
 The sharp 2020 unemployment increase was not predicted. The likely trigger was the unanticipated COVID-19 outbreak.
 Unemployment is projected to remain fairly steady until at least fall of 2025, which end of the prediction time period.
 Unemployment is anticipated to drop in March, assuming normal seasonality.
 
+*FedRate prediction
+FedRates are predicted to rise in the next 12 months. However, this is not in line with recent news (Fed unlikely to do raises in the near future - if 
+anything, more cuts are predicted)
+
+ add Yield Curve prediction graphs
+ 
 
 ## The Team
 
