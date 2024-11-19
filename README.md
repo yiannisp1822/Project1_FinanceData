@@ -42,11 +42,11 @@ This project aims to measure the impact of economic indicators and monetary poli
     from scipy.signal import correlate<br/>
     from datetime import date
 
-1. Open and run [Financial_Analysis.ipynb](Financial_Analysis.ipynb) in a Jupyter Notebook or Jupyter Lab.
+1. Open and run [monthly_analysis.ipynb](monthly_analysis.ipynb:) in a Jupyter Notebook or Jupyter Lab.
 
-#### High-level logic contained in Financial_Analysis.ipynb
+#### High-level logic contained in monthly_analysis.ipynb:
 
-1. Read the following CSV files from [./Resouces](https://github.com/yiannisp1822/Project1_FinanceData/tree/main/Resources):
+1. Read the following CSV files from [./Resouces](./Resources/):
 
     SNP500, FEDFUNDS, bls-monthly-unemployment, 10-Year Treasury, GoldPricesMonthly, inflation_rate_US
 
@@ -118,7 +118,7 @@ Gold - (Gold Futures) - - [Trading Economics](https://data.tradingeconomics.com)
 1. **What were the trends in the S&P 500, Fedrates, inflation treasury bonds, and gold prices from 2007 to the present?**
 
 For the SNP
-![SNP500](SNP_monthly.png)
+![SNP500](./graphs/SNP_monthly.png)
 
 SNP historical data shows the drop of the market post-2008 financial crisis as well as the drop during the 2020 pandemic and subsequent recovery
 Similarly, FedRates dropped close to 0 to stimulate the market post-2008 financial crisis and again during the pandemic. A steep rise in 2022 was employed by the Fed to combat fast-rising inflation (see inflation data) caused by the stimulus policy (~1.5 trillion (check)
@@ -127,19 +127,18 @@ Similarly, FedRates dropped close to 0 to stimulate the market post-2008 financi
 
 Gold Rose significantly post-2008 (calculate % between 2008 and 2012) - as markets flew to safety and had another x% increase during the pandemic, followed by a further x% increase after 2024. We would expect Gold to increase in parallel with the inflation spike of 2022-23 (as Gold is an inflation protection instrument). However, the spike occurred in 2024 as inflation was dropping and under control.
 
-./graphs/Treasury10YvsFedRate.png")
+![Treasur 10 Yr vs FedRate](./graphs/Treasury10YvsFedRate.png)
 
 Treasuries follow the same pattern as FedRates in response to the financial crisis and the pandemic, which is expected.
 
 
-
 2. **What is the correlation between FedFund rates and SNP500, 10-year Treasuries, Gold, Unemployment, and inflation?**
-"./graphs/correlation_matrix.png"
+![Correlation Matrix](./graphs/correlation_matrix.png)
 
 **The highest correlations:  
-Gold Price and SNP500 - (why?)
-Fed Rate and 10Year T rate - makes sense
-SNP 500 and inflation rate - makes sense (somewhat)
+Gold Price and SNP500
+Fed Rate and 10Year T rate
+SNP 500 and inflation rate
 Unemployment rate and SNP500 and FedRate - Inversely correlated, which makes sense (as the market does well, it means that unemployment is lower, and usually employment data releases lead to market movements (low unemployment, market rises, high unemployment, market drops). Similarly, FedRate- low Rates stimulate the economy and push unemployment. 
 
 **Surprises: 
@@ -150,21 +149,23 @@ FedRate—Inflation Rate (0.29)—We would expect Fed Rates to follow inflation 
 
 4. **Predict future Inflation Rates and Unemployment rates to inform investment decisions.**
 
+The Pearson prediction model via Meta's Prophet was used to create the following predictions.
 
+* Inflation Prediction
+![Inflation Prediction](./graphs/Inflation_Prediction.png)
+![Inflation Trends](./graphs/Inflation_Components.png)
 
+As of 2015, the overall trend is for inflation to rise. The trend is predicted to continue at least through fall of 2025.
+Peak inflation rates for the year are anticipated in May.
 
+* Unemployment Prediction
+![Unemployment Prediction](./graphs/Unemployment_Prediction.png)
+![Unemployment Treands](./graphs/Unemployment_Components.png)
 
-@TO-DO Add correlation matrix image
+The sharp 2020 unemployment increase was not predicted. The likely trigger was the unanticipated COVID-19 outbreak.
+Unemployment is projected to remain fairly steady until at least fall of 2025, which end of the prediction time period.
+Unemployment is anticipated to drop in March, assuming normal seasonality.
 
-@TO-DO S&P + unemployment charts
-
-Looking at the relationship between the SNP and Unemployment, there is some inverse correlation (0.57). It is clear how a drop in unemployment post-financial crisis coincided with a rise in the stock market.
-
-@TO-DO FedRate + unemployment chart
-
-@TO-DO FedRate + unemployment conclusions
-
-@TO-DO TBC charts and conclusions
 
 ## The Team
 
