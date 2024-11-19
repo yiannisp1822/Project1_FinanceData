@@ -1,4 +1,4 @@
-# Analysis of Economic Indicators and Monetary Policy on Markets
+# Leading and Lagging Economic Indicators Analysis and Predictions
 
 ## Table of Contents
 
@@ -217,12 +217,7 @@ With YC trending downwards one should expect Fed Rate to rise in the near future
 
 ## Presentation
 
-<iframe
-  src="https://docs.google.com/presentation/d/1HBCpvfkWIzQ6nDba2KJSNt6SU1Rmlibu/edit?usp=sharing&ouid=104881676550207667402&rtpof=true&sd=true"
-  style="width:100%; height:300px;"
-></iframe>
-
-[Presentation Link](https://docs.google.com/presentation/d/1HBCpvfkWIzQ6nDba2KJSNt6SU1Rmlibu/edit?usp=sharing&ouid=104881676550207667402&rtpof=true&sd=true)
+[Leading and Lagging Indicators Presentation](https://docs.google.com/presentation/d/1HBCpvfkWIzQ6nDba2KJSNt6SU1Rmlibu/edit?usp=sharing&ouid=104881676550207667402&rtpof=true&sd=true)
 
 ## The Team
 
