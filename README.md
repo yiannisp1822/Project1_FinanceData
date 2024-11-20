@@ -126,13 +126,19 @@ By studying the relationships among these datasets, the project aims to reveal h
 
 ### Data Sources
 
-S&P 500 (s&p index) - YFinance <br/>
-Yield Curve - https://fred.stlouisfed.org/series/T10Y2Y <br/>
-Fed Interest Rates - Fed Reserve Data Download <br/>
-Inflation (US Core inflation) - Trading Economics <br/>
-Unemployment - BLS Unemployment <br/>
-Gold  - YFinance <br/>
-CCI- https://insights.ceicdata.com/  <br/>
+S&P Index - [YFinance](https://pypi.org/project/yfinance/)
+
+Yield Curve - [St Louis Fed](https://fred.stlouisfed.org/series/T10Y2Y)
+
+Fed Interest Rates -  [Fed Reserve Data Download](https://www.federalreserve.gov/datadownload/)
+
+Inflation (US Core inflation) - [Trading Economics](https://data.tradingeconomics.com)
+
+Unemployment - [BLS Unemployment](https://www.bls.gov/data/#unemployment)
+
+Gold - (Gold Futures) - - [Trading Economics](https://data.tradingeconomics.com)
+
+CCI [CEIC](https://insights.ceicdata.com/)
 
 ### Analysis
 
