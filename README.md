@@ -126,13 +126,13 @@ By studying the relationships among these datasets, the project aims to reveal h
 
 ### Data Sources
 
-S&P 500 (s&p index) - YFinance
-Yield Curve - https://fred.stlouisfed.org/series/T10Y2Y
-Fed Interest Rates - Fed Reserve Data Download
-Inflation (US Core inflation) - Trading Economics
-Unemployment - BLS Unemployment
-Gold  - YFinance
-CCI- https://insights.ceicdata.com/
+S&P 500 (s&p index) - YFinance <br/>
+Yield Curve - https://fred.stlouisfed.org/series/T10Y2Y <br/>
+Fed Interest Rates - Fed Reserve Data Download <br/>
+Inflation (US Core inflation) - Trading Economics <br/>
+Unemployment - BLS Unemployment <br/>
+Gold  - YFinance <br/>
+CCI- https://insights.ceicdata.com/  <br/>
 
 ### Analysis
 
