@@ -52,9 +52,9 @@ This project aims to measure the relationship between leading economic indicator
 
 1. Open and run [monthly_analysis2.ipynb](monthly_analysis_2.ipynb) in a Jupyter Notebook or Jupyter Lab.
 
-#### High-level logic contained in monthly_analysis.ipynb:
+#### High-level logic contained in monthly_analysis_2.ipynb:
 
-[monthly_analysis.ipynb](monthly_analysis_2.ipynb) is the main notebook for performing monthly time series analysis and forecasting.
+[monthly_analysis_2.ipynb](monthly_analysis_2.ipynb) is the main notebook for performing monthly time series analysis and forecasting.
 
 1. Read the following CSV files from [./Resouces](./Resources/):
 
